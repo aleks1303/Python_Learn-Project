@@ -369,9 +369,8 @@
 
 # наприклад:
 #
-st = '‘as 23 fdfdg544’'
-res = [i for i in st if i.isdigit()]
-print(res)
+# st = 'as 23 fd4fd44g544'
+# print((', '.join(num for num in st if num.isdigit())))
 #
 # 2,3,5,4,4        #вивело в консолі.
 #
@@ -381,10 +380,8 @@ print(res)
 #
 # наприклад:
 #
-#   st = ‘as 23 fdfdg544 34’ #введена строка
-# st1 = '‘as 23 fdfdg544’'
-# res1 = re.findall(r"\d+", st)
-# print(res1)
+# st1 = '44ss44lkkk556ddkdk4kk898jdj5'
+# print(', '.join(''.join(ch if ch.isdigit() else ' ' for ch in st1).split()))
 #   23, 544, 34              #вивело в консолі
 #
 # #################################################################################
@@ -397,12 +394,13 @@ print(res)
 #
 # 1) є строка:
 #
-# greeting = ‘Hello, world’
+# greeting = 'Hello, world'
 #
+# print([char.upper() for char in greeting])
+
 # записати кожний символ, як окремий елемент списку, і зробити його заглавним:
 #
 # [‘H’, ‘E’, ‘L’, ‘L’, ‘O’, ‘,’, ‘ ‘, ‘W’, ‘O’, ‘R’, ‘L’, ‘D’]
-#
 #
 #
 # 2) з діапазону від 0-50 записати тільки непарні числа, при цьому піднести їх до квадрату
@@ -410,7 +408,7 @@ print(res)
 # приклад:
 #
 # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, …]
-#
+# print([i**2 for i in range(50) if i % 2])
 #
 #
 # function
@@ -419,18 +417,51 @@ print(res)
 #
 # – створити функцію, яка виводить List
 #
+# def f (list_):
+#     for item in list_:
+#         print(item)
+# f([4,4,6,6])
+#
 # – створити функцію, яка приймає три числа, та виводить та повертає найбільше.
+# def max_int(a,b,c):
+#     print (max(a,b,c))
+#     return max(a,b,c)
+# max_int(4,8,43)
 #
 # – створити функцію, яка приймає будь-яку кількість чисел, повертає найменше, а виводить найбільше
+# #
+# def some_int(args):
+#     print(max(args))
+#     return min(args)
 #
+# some_int([1,2,3,55,54])
 # – створити функцію, яка повертає найбільше число з List
 #
-# – створити функцію, яка повертає найменше число з List
+# def list_max(list_):
+#     print(max(list_))
+#     return max(list_)
 #
+# list_max([33,3,44,5555,43])
+#
+# # – створити функцію, яка повертає найменше число з List
+# #
+# def list_min(list_):
+#     print(min(list_))
+#     return min(list_)
+#
+# list_min([33,3,44,5555,43])
 # – створити функцію, яка приймає List чисел та складає значення елементів List та повертає його.
 #
-# – створити функцію, яка приймає List чисел та повертає середнє арифметичне його значень.
-#
+# def sum_int(list_):
+#     print(sum(list_))
+#     return sum(list_)
+# sum_int([1,2,3,4,5,6])
+# # – створити функцію, яка приймає List чисел та повертає середнє арифметичне його значень.
+# #
+# def avg_int(list_):
+#     print(sum(list_)/len(list_))
+#     return sum(list_)/len(list_)
+# avg_int([1,2,3,4,5,6])
 #
 #
 # 1 Є list:
@@ -438,14 +469,66 @@ print(res)
 #   list = [22, 3,5,2,8,2,-23, 8,23,5]
 #
 #   – знайти  мін. число
+l = [22, 3,5,2,8,2,-23, 8,23,5]
+
+def min_int (l):
+    print(min(l))
+min_int(l)
+# #   – видалити усі дублікати
+def duplicate():
+    copy = l.copy()
+    print(set(copy))
+duplicate()
+# #   – замінити кожне 4-те значення на ‘X’
 #
-#   – видалити усі дублікати
-#
-#   – замінити кожне 4-те значення на ‘X’
-#
+def to_x(l):
+    copy = l.copy()
+    print(["x" if not (i+1)%4 else item for i, item in enumerate(copy)])
+to_x(l)
 # 2) вивести на екран пустий квадрат з “*”, сторона якого вказана як аргумент функції
 #
+def square(n):
+    for i in range(n):
+        if i == 0 or i == n-1:
+            print('*'*n)
+
+        else:
+            print('*'+ ' ' *(n-2)+'*')
+square(10)
 # 3) вивести табличку множення за допомогою циклу while
 #
+def multi_tab():
+   size = 9
+   i = 1
+   while i <= size:
+       j=1
+       while j <= size:
+           res = i * j
+           print(f'{res:4}', end='')
+           j += 1
+       print()
+       i+=1
+multi_tab()
 # 4) переробити це завдання під меню
 
+while True:
+   print('1) – знайти  мін. число')
+   print('2) – видалити усі дублікати')
+   print('3) – замінити кожне 4-те значення на ‘X’')
+   print('4) – вивести на екран пустий квадрат з “*”, сторона якого вказана як аргумент функції')
+   print('5) – вивести табличку множення за допомогою циклу while')
+   print('6) – вихід')
+
+   choice = (input("Зробіть свій вибір: "))
+   if choice == "1":
+       (min_int(l))
+   elif choice == "2":
+       (duplicate())
+   elif choice == "3":
+       (to_x(l))
+   elif choice == "4":
+      (square(10))
+   elif choice == "5":
+       (multi_tab())
+   elif choice == "6":
+       break
